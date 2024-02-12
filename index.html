@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./style.css">
     <!-- Add Font Awesome link if not already included -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-POD9RvKz02BRUufXlW9Rv4Iw6Gio/33aUpYJDOynfFMDjbPfrPcyiLu6LdWjqRWI" crossorigin="anonymous">
+    <script src="https://www.youtube.com/iframe_api"></script> <!-- Add the YouTube API script -->
 </head>
 
 <body>
@@ -49,10 +50,34 @@
     </div>
     
 
-    <!-- partial -->
+    <!-- Add the musicPlayer div for YouTube background music -->
+    <div id="musicPlayer"></div>
+
+    <!-- Your existing scripts -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
     <script src="./script.js"></script>
 
+    <script>
+        function onYouTubeIframeAPIReady() {
+            var player = new YT.Player('musicPlayer', {
+                height: '0',
+                width: '0',
+                videoId: 'ThEftPScNwA', // Replace with your YouTube video ID
+                playerVars: {
+                    autoplay: 1,
+                    loop: 1,
+                    controls: 0,
+                    showinfo: 0,
+                    mute: 1
+                },
+                events: {
+                    onReady: function (event) {
+                        event.target.playVideo();
+                    }
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
